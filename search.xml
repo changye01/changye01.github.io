@@ -3,7 +3,7 @@
   <entry>
     <title>HEXO &amp; git action自动部署blog</title>
     <url>/2022/04/18/github-pages/</url>
-    <content><![CDATA[<h1 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h1><p>在本教程中，我们使用<a href="https://docs.github.com/en/actions">GitHub Actions</a>来部署 GitHub Pages。它适用于公共和私有存储库。如果您不想将源文件夹上传到 GitHub，请跳至<a href="https://hexo.io/docs/github-pages#One-command-deployment">单命令部署部分。</a></p>
+    <content><![CDATA[<h1 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h1><p>在本教程中，我们使用<a href="https://docs.github.com/en/actions">GitHub Actions</a>来部署 GitHub Pages。它适用于公共和私有存储库。如果您不想将源文件夹上传到 GitHub，请跳至<a href="https://hexo.io/docs/github-pages#One-command-deployment">单命令部署部分。</a><br>&lt;– more –&gt;</p>
 <ol>
 <li>创建一个名为**<em>username</em> .github.io**的 repo ，其中 username 是您在 GitHub 上的用户名。如果您已经上传到其他 repo，请重命名 repo。</li>
 <li>将 Hexo 文件夹中的文件推送到存储库的默认分支。默认分支通常是<strong>main</strong>，较旧的存储库可能使用<strong>master</strong>分支。<ul>
@@ -41,7 +41,7 @@
   <entry>
     <title>Hello World777</title>
     <url>/2022/04/18/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>&lt;– more –&gt;</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
