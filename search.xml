@@ -6,7 +6,7 @@
     <content><![CDATA[<h1 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h1><p>在本教程中，我们使用<a href="https://docs.github.com/en/actions">GitHub Actions</a>来部署 GitHub Pages。它适用于公共和私有存储库。如果您不想将源文件夹上传到 GitHub，请跳至<a href="https://hexo.io/docs/github-pages#One-command-deployment">单命令部署部分。</a></p>
 <span id="more"></span>
 
-<ol>
+<h2 id="通过分支部署"><a href="#通过分支部署" class="headerlink" title="通过分支部署"></a>通过分支部署</h2><ol>
 <li>创建一个名为<code>username.github.io</code>的 repo ，其中 username 是您在 GitHub 上的用户名。如果您已经上传到其他 repo，请重命名 repo。</li>
 <li>将 Hexo 文件夹中的文件推送到存储库的默认分支。默认分支通常是<strong>main</strong>，较旧的存储库可能使用<strong>master</strong>分支。<ul>
 <li>将<code>main</code>分支推送到 GitHub：<br> $ git push -u 起源主</li>
