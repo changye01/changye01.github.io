@@ -44,6 +44,24 @@
       </tags>
   </entry>
   <entry>
+    <title>linux 查看端口占用</title>
+    <url>/2022/04/21/linux_command/</url>
+    <content><![CDATA[<p>在linux下开发时，你的软件可能要使用某一个端口，或者想查找某一个端口是否被占用。需要怎么做呢？</p>
+<span id="more"></span>
+<p>lsof是一个非常强大的linux工具，她被用来查找哪些程序使用了那些文件。在linux系统下，基本上所有的东西都可以被当作文件来用。socket当然也是一种文件了。所以lsof可以用来查找谁用了某一个端口。具体方法：</p>
+<p>lsof -i :port_number |grep “”</p>
+<p>-i是用来查找和网络相关的文件，”:”号是必须的，它是标志你查找的是一个端口。port_number就是你要查找的端口号，譬如你要查找是否有程序占用了oracle的监听端口1521,就可以使用lsof -i :1521 ｜grep “”。如果有程序已经占用了，那么下面打印的第二个字段就是该程序的进程id，第一个字段是进程的名字。</p>
+<p>如果只有losf -i :port_number可能会查到很多应用程序，但这些程序实际并没有占用你指定的端口，这些端口只是连接到本机器或者别的机器的该端口。所以要grep ““，因为一个端口只可能被一个程序占用的</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>port</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ssh登录时在参数中加入密码的解决方案</title>
     <url>/2022/04/21/sshpass/</url>
     <content><![CDATA[<p>在使用ssh登录远程服务器的时候，在执行完ssh user@ip后，要输入登录密码，有时候登录密码记不住，这样带来的很多的麻烦，有没有一种在ssh的参数中直接加入密码的方法呢？</p>
