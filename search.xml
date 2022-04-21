@@ -34,10 +34,13 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>hexo</category>
       </categories>
       <tags>
-        <tag>Deploy</tag>
+        <tag>deploy</tag>
+        <tag>hexo</tag>
+        <tag>git_action</tag>
+        <tag>github_page</tag>
       </tags>
   </entry>
   <entry>
@@ -77,10 +80,10 @@
 <p>于是把sshpass和ssh命令集合就能实现ssh登录的时候加入密码了，这样把登录某台计算机的命令写成shell脚本，后面就十分的方便了</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">sshpass -p &quot;XXX&quot; ssh user@IP</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Linx</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
+        <tag>linux</tag>
         <tag>ssh</tag>
         <tag>sshpass</tag>
       </tags>
