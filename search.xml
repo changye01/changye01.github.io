@@ -69,4 +69,21 @@
         <tag>sshpass</tag>
       </tags>
   </entry>
+  <entry>
+    <title>zsh: no matches found</title>
+    <url>/2022/04/21/zsh_no_match/</url>
+    <content><![CDATA[<p>如果你使用的是<code>zsh</code> ，那么在你使用 <code>find</code> 进行通配符 <code>*</code> 匹配的时候，会出现 <code>zsh: no matches found</code> 的问题<br>这是由于 <code>zsh</code> 导致的，在缺省的情况下，<code>zsh</code> 始终自动解释 <code>*</code> ，传不到给 <code>find</code> 解释</p>
+<span id="more"></span>
+<p>解决方案:<br>在 <code>~/.zshrc</code> 中追加</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">setopt no_nomatch</span><br></pre></td></tr></table></figure>
+<p>使修改生效，执行<code>source ~/.zshrc</code></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>zsh</tag>
+      </tags>
+  </entry>
 </search>
