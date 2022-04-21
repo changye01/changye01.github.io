@@ -21,28 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"changye01.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在本教程中，我们使用GitHub Actions来部署 GitHub Pages。它适用于公共和私有存储库。如果不想将源文件夹上传到 GitHub，请跳至单命令部署部分。">
+    <meta name="description" content="ssh登录时在参数中加入密码的解决方案在使用ssh登录远程服务器的时候，在执行完ssh user@ip后，要输入登录密码，有时候登录密码记不住，这样带来的很多的麻烦，有没有一种在ssh的参数中直接加入密码的方法呢？查看ssh的帮助我们发现ssh命令并不能在参数中指定密码。 123456usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo &amp; GitAction自动部署GitPages">
-<meta property="og:url" content="https://changye01.github.io/2022/04/18/github-pages/index.html">
+<meta property="og:title" content="ssh登录时在参数中加入密码的解决方案">
+<meta property="og:url" content="https://changye01.github.io/2022/04/21/sshpass/index.html">
 <meta property="og:site_name" content="ChangYe">
-<meta property="og:description" content="在本教程中，我们使用GitHub Actions来部署 GitHub Pages。它适用于公共和私有存储库。如果不想将源文件夹上传到 GitHub，请跳至单命令部署部分。">
+<meta property="og:description" content="ssh登录时在参数中加入密码的解决方案在使用ssh登录远程服务器的时候，在执行完ssh user@ip后，要输入登录密码，有时候登录密码记不住，这样带来的很多的麻烦，有没有一种在ssh的参数中直接加入密码的方法呢？查看ssh的帮助我们发现ssh命令并不能在参数中指定密码。 123456usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address]">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-18T10:03:01.000Z">
+<meta property="article:published_time" content="2022-04-21T02:42:45.000Z">
 <meta property="article:modified_time" content="2022-04-21T02:43:48.589Z">
 <meta property="article:author" content="ChangYe">
-<meta property="article:tag" content="Deploy">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="sshpass">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://changye01.github.io/2022/04/18/github-pages/">
+<link rel="canonical" href="https://changye01.github.io/2022/04/21/sshpass/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://changye01.github.io/2022/04/18/github-pages/","path":"2022/04/18/github-pages/","title":"Hexo & GitAction自动部署GitPages"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://changye01.github.io/2022/04/21/sshpass/","path":"2022/04/21/sshpass/","title":"ssh登录时在参数中加入密码的解决方案"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo & GitAction自动部署GitPages | ChangYe</title>
+<title>ssh登录时在参数中加入密码的解决方案 | ChangYe</title>
   
 
 
@@ -145,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%88%86%E6%94%AF%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text">通过分支部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-page"><span class="nav-number">2.</span> <span class="nav-text">project page</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh%E7%99%BB%E5%BD%95%E6%97%B6%E5%9C%A8%E5%8F%82%E6%95%B0%E4%B8%AD%E5%8A%A0%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">ssh登录时在参数中加入密码的解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Asshpass"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案：sshpass</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -216,7 +218,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://changye01.github.io/2022/04/18/github-pages/">
+    <link itemprop="mainEntityOfPage" href="https://changye01.github.io/2022/04/21/sshpass/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar_jianke.jpeg">
@@ -229,12 +231,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Hexo & GitAction自动部署GitPages | ChangYe">
+      <meta itemprop="name" content="ssh登录时在参数中加入密码的解决方案 | ChangYe">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo & GitAction自动部署GitPages<a href="https://github.com/changye01/changye01.github.io/edit/master/source/_posts/github-pages.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+          ssh登录时在参数中加入密码的解决方案<a href="https://github.com/changye01/changye01.github.io/edit/master/source/_posts/sshpass.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
         </h1>
 
         <div class="post-meta-container">
@@ -252,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+          <a href="/categories/Linx/" itemprop="url" rel="index"><span itemprop="name">Linx</span></a>
         </span>
     </span>
 
@@ -273,36 +275,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>在本教程中，我们使用<a target="_blank" rel="noopener" href="https://docs.github.com/en/actions">GitHub Actions</a>来部署 GitHub Pages。它适用于公共和私有存储库。如果不想将源文件夹上传到 GitHub，请跳至<a target="_blank" rel="noopener" href="https://hexo.io/docs/github-pages#One-command-deployment">单命令部署部分。</a></p>
-<span id="more"></span>
+        <h1 id="ssh登录时在参数中加入密码的解决方案"><a href="#ssh登录时在参数中加入密码的解决方案" class="headerlink" title="ssh登录时在参数中加入密码的解决方案"></a>ssh登录时在参数中加入密码的解决方案</h1><p>在使用ssh登录远程服务器的时候，在执行完ssh user@ip后，要输入登录密码，有时候登录密码记不住，这样带来的很多的麻烦，有没有一种在ssh的参数中直接加入密码的方法呢？查看ssh的帮助我们发现ssh命令并不能在参数中指定密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]</span><br><span class="line">           [-D [bind_address:]port] [-E log_file] [-e escape_char]</span><br><span class="line">           [-F configfile] [-I pkcs11] [-i identity_file] [-L address]</span><br><span class="line">           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]</span><br><span class="line">           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]</span><br><span class="line">           [-w local_tun[:remote_tun]] [user@]hostname [command]</span><br></pre></td></tr></table></figure>
 
-<h1 id="通过分支部署"><a href="#通过分支部署" class="headerlink" title="通过分支部署"></a>通过分支部署</h1><ol>
-<li>创建一个名为<code>username.github.io</code>的 repo ，其中 username 是您在 GitHub 上的用户名。如果您已经上传到其他 repo，请重命名 repo。</li>
-<li>将 Hexo 文件夹中的文件推送到存储库的默认分支。默认分支通常是<strong>main</strong>，较旧的存储库可能使用<strong>master</strong>分支。<ul>
-<li>将<code>main</code>分支推送到 GitHub：<br> $ git push -u 起源主</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>默认情况下不（也不应该）上传该<code>public/</code>文件夹，请确保该<code>.gitignore</code>文件包含<code>public/</code>行。文件夹结构应该与<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-starter">这个 repo</a>大致相似，没有<code>.gitmodules</code>文件。</li>
-</ul>
-<ol start="3">
-<li>检查您在本地计算机上使用的 Node.js 版本，使用<code>node --version</code>. 记下主要版本（例如，<code>v16.y.z</code>）</li>
-<li><code>.github/workflows/pages.yml</code>使用以下内容在您的存储库中创建（替换<code>16</code>为您在上一步中记下的 Node.js 的主要版本）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">name: Pages  </span><br><span class="line">  </span><br><span class="line">on:  </span><br><span class="line">  push:  </span><br><span class="line">    branches:  </span><br><span class="line">      - main  # default branch  </span><br><span class="line">  </span><br><span class="line">jobs:  </span><br><span class="line">  pages:  </span><br><span class="line">    runs-on: ubuntu-latest  </span><br><span class="line">    steps:  </span><br><span class="line">      - uses: actions/checkout@v2  </span><br><span class="line">      - name: Use Node.js 16.x  </span><br><span class="line">        uses: actions/setup-node@v2  </span><br><span class="line">        with:  </span><br><span class="line">          node-version: &#x27;16&#x27;  </span><br><span class="line">      - name: Cache NPM dependencies  </span><br><span class="line">        uses: actions/cache@v2  </span><br><span class="line">        with:  </span><br><span class="line">          path: node_modules  </span><br><span class="line">          key: $&#123;&#123; runner.OS &#125;&#125;-npm-cache  </span><br><span class="line">          restore-keys: |  </span><br><span class="line">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache  </span><br><span class="line">      - name: Install Dependencies  </span><br><span class="line">        run: npm install  </span><br><span class="line">      - name: Build  </span><br><span class="line">        run: npm run build  </span><br><span class="line">      - name: Deploy  </span><br><span class="line">        uses: peaceiris/actions-gh-pages@v3  </span><br><span class="line">        with:  </span><br><span class="line">          github_token: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;  </span><br><span class="line">          publish_dir: ./public</span><br></pre></td></tr></table></figure></li>
-<li>部署完成后，可以在<code>gh-pages</code>存储库的分支中找到生成的页面。</li>
-<li>在 GitHub 存储库的设置中，导航到<strong>Settings</strong> &gt; <strong>Pages</strong> &gt; <strong>Source</strong>。将分支更改为<code>gh-pages</code>并保存。</li>
-<li>检查_用户名_.github.io 的网页。</li>
-</ol>
-<h1 id="project-page"><a href="#project-page" class="headerlink" title="project page"></a>project page</h1><p>如果你更喜欢在 GitHub 上有一个项目页面：</p>
-<ol>
-<li>导航到 GitHub 上的存储库。转到<strong>设置</strong>选项卡。更改<strong>存储库名称</strong>，以便您的博客在<code>username.github.io/repository</code>可用, <strong>存储库</strong>可以是任何名称，例如_blog_或_hexo_。</li>
-<li>编辑您的<code>_config.yml</code>，将<code>url:</code>值更改为<code>https:// _username_.github.io/_repository</code>。</li>
-<li>提交并推送到默认分支。</li>
-<li>部署完成后，可以在<code>gh-pages</code>存储库的分支中找到生成的页面。</li>
-<li>在 GitHub 存储库的设置中，导航到<code>Settings&gt; Pages &gt; Source</code>。将分支更改为<code>gh-pages</code>并保存。</li>
-<li>检查<code>_用户名_.github.io/_repository_</code>的网页。</li>
-</ol>
-
+<h2 id="解决方案：sshpass"><a href="#解决方案：sshpass" class="headerlink" title="解决方案：sshpass"></a>解决方案：sshpass</h2><p>sshpass:用于非交互的ssh 密码验证，允许你用 -p 参数指定明文密码，然后直接登录远程服务器。 它支持密码从命令行,文件,环境变量中读取。</p>
+<p>首先在机器上安装sshpass<br>对于debian&#x2F;ubuntu系统来说，安装方式很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install sshpass</span><br></pre></td></tr></table></figure>
+<p>对于其他的linux,可以编译sshpass的源码安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> wget http://sourceforge.net/projects/sshpass/files/sshpass/1.05/sshpass-1.05.tar.gz</span><br><span class="line">tar xvzf sshpass-1.05.tar.gz</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>安装好之后，使用sshpass命令，得到如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Usage: sshpass [-f|-d|-p|-e] [-hV] command parameters</span><br><span class="line">   -f filename   Take password to use from file</span><br><span class="line">   -d number     Use number as file descriptor for getting password</span><br><span class="line">   -p password   Provide password as argument (security unwise)</span><br><span class="line">   -e            Password is passed as env-var &quot;SSHPASS&quot;</span><br><span class="line">   With no parameters - password will be taken from stdin</span><br><span class="line"></span><br><span class="line">   -h            Show help (this screen)</span><br><span class="line">   -V            Print version information</span><br><span class="line">At most one of -f, -d, -p or -e should be used</span><br></pre></td></tr></table></figure>
+<p>于是把sshpass和ssh命令集合就能实现ssh登录的时候加入密码了，这样把登录某台计算机的命令写成shell脚本，后面就十分的方便了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">sshpass -p &quot;XXX&quot; ssh user@IP</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -319,7 +303,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://changye01.github.io/2022/04/18/github-pages/" title="Hexo &amp; GitAction自动部署GitPages">https://changye01.github.io/2022/04/18/github-pages/</a>
+      <a href="https://changye01.github.io/2022/04/21/sshpass/" title="ssh登录时在参数中加入密码的解决方案">https://changye01.github.io/2022/04/21/sshpass/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -328,17 +312,22 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Deploy/" rel="tag"><i class="fa fa-tag"></i> Deploy</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/ssh/" rel="tag"><i class="fa fa-tag"></i> ssh</a>
+              <a href="/tags/sshpass/" rel="tag"><i class="fa fa-tag"></i> sshpass</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/04/18/github-pages/" rel="prev" title="Hexo & GitAction自动部署GitPages">
+                  <i class="fa fa-chevron-left"></i> Hexo & GitAction自动部署GitPages
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/21/sshpass/" rel="next" title="ssh登录时在参数中加入密码的解决方案">
-                  ssh登录时在参数中加入密码的解决方案 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/04/21/hello-world/" rel="next" title="Hello World">
+                  Hello World <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
