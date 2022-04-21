@@ -49,9 +49,10 @@
     <content><![CDATA[<p>在linux下开发时，你的软件可能要使用某一个端口，或者想查找某一个端口是否被占用。需要怎么做呢？</p>
 <span id="more"></span>
 <p>lsof是一个非常强大的linux工具，她被用来查找哪些程序使用了那些文件。在linux系统下，基本上所有的东西都可以被当作文件来用。socket当然也是一种文件了。所以lsof可以用来查找谁用了某一个端口。具体方法：</p>
-<p>lsof -i :port_number |grep “”</p>
-<p>-i是用来查找和网络相关的文件，”:”号是必须的，它是标志你查找的是一个端口。port_number就是你要查找的端口号，譬如你要查找是否有程序占用了oracle的监听端口1521,就可以使用lsof -i :1521 ｜grep “”。如果有程序已经占用了，那么下面打印的第二个字段就是该程序的进程id，第一个字段是进程的名字。</p>
-<p>如果只有losf -i :port_number可能会查到很多应用程序，但这些程序实际并没有占用你指定的端口，这些端口只是连接到本机器或者别的机器的该端口。所以要grep ““，因为一个端口只可能被一个程序占用的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsof -i :port_number |grep <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code>是用来查找和网络相关的文件，<code>:</code>号是必须的，它是标志你查找的是一个端口。port_number就是你要查找的端口号，譬如你要查找是否有程序占用了oracle的监听端口1521,就可以使用<code>lsof -i :1521 ｜grep &quot;&quot;</code>。如果有程序已经占用了，那么下面打印的第二个字段就是该程序的进程id，第一个字段是进程的名字。</p>
+<p>如果只有<code>losf -i :port_number</code>可能会查到很多应用程序，但这些程序实际并没有占用你指定的端口，这些端口只是连接到本机器或者别的机器的该端口。所以要<code>grep &quot;&quot;</code>，因为一个端口只可能被一个程序占用的</p>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -59,6 +60,25 @@
       <tags>
         <tag>linux</tag>
         <tag>port</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Obsidian 社区插件无法下载</title>
+    <url>/2022/04/21/obsidian_no_community/</url>
+    <content><![CDATA[<p>因为某些原因，在国内经常无法下载 Obsidian 的社区插件。</p>
+<span id="more"></span>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li>下载 <a href="https://gitee.com/juqkai/obsidian-proxy-github/releases">obsidian-proxy-github.zip</a></li>
+<li>解压 obsidian-proxy-github.zip</li>
+<li>将解压的文件夹放入笔记目录下的插件目录内。如：XXX&#x2F;.obsidian&#x2F;plugins</li>
+<li>重启obsidian</li>
+</ol>
+]]></content>
+      <categories>
+        <category>obsidian</category>
+      </categories>
+      <tags>
+        <tag>obsidian</tag>
       </tags>
   </entry>
   <entry>
