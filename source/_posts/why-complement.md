@@ -12,7 +12,7 @@ date: 2022-04-21 18:42:45
 接下来我会从**根源上**详细讲解下[原码](https://www.zhihu.com/search?q=%E5%8E%9F%E7%A0%81&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A1878359705%7D)、反码以及补码产生的来龙去脉。
 前方高能，坐稳了！
 先来看一个简单的问题：小孩子都知道数数：1,2,3,4,5,6,7,8,9,10，可为什么要这样数呢？为什么不是1,2,3,4,5,6,10呢？
-一种比较流行的解释是因为人类有10个手指：
+一种比较流行的解释是因为人类有10个手指：1
 
 {%asset_img Pasted_image_20220421162841.png %}
 所以人类的数字系统就是10进制的，如果这个解释成立，那么[变色龙](https://www.zhihu.com/search?q=%E5%8F%98%E8%89%B2%E9%BE%99&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A1878359705%7D)的数字系统应该是4进制
