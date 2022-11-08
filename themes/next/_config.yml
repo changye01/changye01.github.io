@@ -39,9 +39,9 @@ custom_file_path:
 #default 这是 NextT 的初始版本。使用黑白色调，主要看起来干净。
 #scheme: Muse
 #更紧凑的 Muse 版本，具有整洁的单列视图。
-#scheme: Mist
+scheme: Mist
 # 双栏方案，新鲜如邻居的女儿
-scheme: Pisces
+#scheme: Pisces
 #看起来像双鱼座，但有明显的带有阴影的柱状块，看起来对视图更敏感。
 #scheme: Gemini
 
